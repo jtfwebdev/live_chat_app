@@ -20,7 +20,10 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     // Register STOMP endpoints - "/ws" is what clients will use to connect to websocket
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/ws").withSockJS(); // SockJS enables fallback option for browsers that don't support WebSocket natively
+        registry
+                .addEndpoint("/ws")
+                .setAllowedOrigins("http://localhost:5173") // DEV ONLY, ALLOW CORS <<<<<<<<<<<<
+                .withSockJS(); // SockJS enables fallback option for browsers that don't support WebSocket natively
     }
 
 }
