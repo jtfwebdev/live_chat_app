@@ -1,6 +1,5 @@
 package com.example.live_chat_app.DTO;
 
-import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,9 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ChatroomDTO {
+public class IncomingMessageDTO {
 
-    @NotBlank(message = "Chatroom name is required")
-    private String name;
+    private String user;
+    private String message;
+    private String chatroomName;
 
 }

@@ -20,6 +20,10 @@ public class ChatroomService {
 
     }
 
+    public Chatroom searchChatroomByName(String name) {
+        return chatroomRepo.findByName(name);
+    }
+
     public void createNewChatroom(ChatroomDTO chatroom) {
 
         Chatroom newChatroom = new Chatroom(chatroom.getName());
