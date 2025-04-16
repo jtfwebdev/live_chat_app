@@ -10,8 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.net.http.HttpResponse;
 import java.util.List;
 
 @RestController
@@ -26,8 +24,7 @@ public class ChatroomController {
     @GetMapping("/get-chatrooms")
     public ResponseEntity<List<Chatroom>> getChatrooms() {
 
-        System.out.println(fetchChatrooms());
-        return new ResponseEntity<>(fetchChatrooms(), HttpStatus.OK);
+        return new ResponseEntity<>(chatroomService.getAllChatrooms(), HttpStatus.OK);
 
     }
 
@@ -36,13 +33,7 @@ public class ChatroomController {
 
         chatroomService.createNewChatroom(chatroomRequest);
 
-        return new ResponseEntity<>(fetchChatrooms(), HttpStatus.OK);
-
-    }
-
-    private List<Chatroom> fetchChatrooms() {
-
-        return chatroomService.getAllChatrooms();
+        return new ResponseEntity<>(chatroomService.getAllChatrooms(), HttpStatus.OK);
 
     }
 
