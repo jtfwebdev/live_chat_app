@@ -1,5 +1,6 @@
 package com.example.live_chat_app.Controllers;
 
+import com.example.live_chat_app.CustomExceptions.ResourceNotFoundException;
 import com.example.live_chat_app.DTO.ChatroomDTO;
 import com.example.live_chat_app.Models.Chatroom;
 import com.example.live_chat_app.Models.Message;
@@ -22,7 +23,13 @@ public class ChatroomController {
     MessageService messageService;
 
     @GetMapping("/get-chatrooms")
-    public ResponseEntity<List<Chatroom>> getChatrooms() {
+    public ResponseEntity<List<Chatroom>> getChatrooms() throws ResourceNotFoundException {
+
+        List<Chatroom> chatrooms = chatroomService.getAllChatrooms();
+
+        if (chatrooms.isEmpty()) {
+            throw new ResourceNotFoundException("No chatrooms found");
+        }
 
         return new ResponseEntity<>(chatroomService.getAllChatrooms(), HttpStatus.OK);
 
