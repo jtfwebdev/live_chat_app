@@ -2,15 +2,13 @@ package com.example.live_chat_app.Models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Data
+@Builder
 @Table(name="messages")
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,7 +18,7 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="user", nullable = false)
+    @Column(name="userName", nullable = false)
     private String user;
 
     @Column(name="message", nullable = false)
